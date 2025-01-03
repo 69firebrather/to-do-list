@@ -38,13 +38,6 @@ function Todolist() {
         }
     }
 
-    useEffect(() => {
-        const data = localStorage.getItem("Tasks");
-        if (data) {
-            setTasks(JSON.parse(data));
-        }
-    }, []);
-
     return (
         <div className="Todolist" >
             <h2>List of tasks to do:</h2>
