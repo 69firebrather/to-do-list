@@ -1,15 +1,19 @@
-import { useState } from "react"
+import React, { useEffect, useState } from "react"
 
 function Todolist() {
-
-    const [tasks, setTasks] = useState([]);
+    
+    const data = JSON.parse(localStorage.getItem("Tasks"))
+    const [tasks, setTasks] = useState(data??[]);
     const [hover, setHover] = useState(null);
 
     function addNewTasks() {
         const newTask = document.getElementById("addNewTasks").value
         if (newTask !== "") {
             document.getElementById("addNewTasks").value = ("");
-            setTasks((t) => ([...t, newTask]))
+            const updatedTask = [...tasks , newTask];
+            setTasks(updatedTask);
+           localStorage.setItem("Tasks", JSON.stringify(updatedTask));
+
         }
 
     }
